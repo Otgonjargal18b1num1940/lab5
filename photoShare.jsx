@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {
-  HashRouter, Route, Switch
+  BrowserRouter, Route, Switch
 } from 'react-router-dom';
 import {
   Grid, Typography, Paper
@@ -21,7 +21,7 @@ class PhotoShare extends React.Component {
 
   render() {
     return (
-      <HashRouter>
+      <BrowserRouter>
       <div>
       <Grid container spacing={8}>
         <Grid item xs={12}>
@@ -45,8 +45,10 @@ class PhotoShare extends React.Component {
                   display 9/12 of the window. The Switch component enables us to conditionally render different
                   components to this part of the screen. You don&apos;t need to display anything here on the homepage,
                   so you should delete this Route component once you get started.
+                  
                   </Typography>}
               />
+              
               <Route path="/users/:userId"
                 render={ props => <UserDetail {...props} /> }
               />
@@ -59,7 +61,7 @@ class PhotoShare extends React.Component {
         </Grid>
       </Grid>
       </div>
-    </HashRouter>
+    </BrowserRouter>
     );
   }
 }

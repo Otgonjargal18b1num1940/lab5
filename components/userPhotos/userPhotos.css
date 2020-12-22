@@ -1,0 +1,15 @@
+img{
+    
+    border:1.2px solid purple;
+    border-radius: 20px;
+    height: 600px;
+    width: 1200px;
+}
+.comm{
+    font-family: Lucida Console, 'Courier New', monospace;
+    background-color:rgb(83, 207, 238);
+    
+}
+.s_font{
+	    font-size: 30px;  
+}

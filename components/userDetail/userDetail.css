@@ -1,0 +1,18 @@
+.User{
+color: blue ;
+}
+.userName tr td {
+    color:#090c0f;
+    font-size: 30px;
+    font-family: "Papyrus" ,fantasy;
+    padding: 20px;
+}
+}
+.font{
+	font-size: 35px;
+}
+.detail{
+    color:black;
+    font-size: 30px;
+    margin-left:30px ;
+}

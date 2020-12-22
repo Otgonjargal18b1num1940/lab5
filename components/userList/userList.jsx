@@ -1,13 +1,16 @@
 import React from 'react';
+import {Link} from "react-router-dom"
 import {
   Divider,
   List,
   ListItem,
   ListItemText,
   Typography,
+  Avatar,
 }
 from '@material-ui/core';
 import './userList.css';
+import axios from 'axios';
 
 /**
  * Define UserList, a React componment of CS142 project #5
@@ -15,33 +18,43 @@ import './userList.css';
 class UserList extends React.Component {
   constructor(props) {
     super(props);
+    this.state={
+      infor:[],
+    }
+    axios.get('http://localhost:3000/user/list')
+    .then(response=>response.data)
+    .then(list=>this.setState({infor:list}))
   }
 
+  
+
   render() {
+    console.log("userList orloo");
+    
+    var users= window.cs142models.userListModel();
+    console.log(this.state.infor);
+    
     return (
-      <div>
-        <Typography variant="body1">
-          This is the user list, which takes up 3/12 of the window.
-          You might choose to use <a href="https://material-ui.com/demos/lists/">Lists</a> and <a href="https://material-ui.com/demos/dividers">Dividers</a> to
-          display your users like so:
-        </Typography>
-        <List component="nav">
-          <ListItem>
-            <ListItemText primary="Item #1" />
+      <div><tr><td><Avatar src="user.png"></Avatar></td><td><p className="name"> User's name</p></td></tr>
+        
+        {
+          this.state.infor.map(pa=>
+          <div key={pa}>
+            <List className="list">
+            <ListItem  button exact="true" component={Link} to={"/users/" + pa._id}>
+
+            <ListItemText primary={pa.first_name + " "+ pa.last_name} />
+          
+            
           </ListItem>
-          <Divider />
-          <ListItem>
-            <ListItemText primary="Item #2" />
-          </ListItem>
-          <Divider />
-          <ListItem>
-            <ListItemText primary="Item #3" />
-          </ListItem>
-          <Divider />
-        </List>
-        <Typography variant="body1">
-          The model comes in from window.cs142models.userListModel()
-        </Typography>
+          </List>
+        
+          
+          </div>
+          
+         
+          )
+        }
       </div>
     );
   }
